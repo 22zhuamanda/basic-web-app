@@ -60,20 +60,29 @@ export default function QueryProcessor(query: string): string {
     return `${product}`;
   }}
 
-  if (query.toLowerCase().includes("square") && query.toLowerCase().includes("cube")) {
-    // Extract numbers from the query string
+  
+  if (query.toLowerCase().includes("cube")) {
+    // Extract numbers from the query
     const match = query.match(/\d+/g);
-
     if (match) {
       const numbers = match.map(Number);
-    
 
-    // Filter numbers that are both squares and cubes
-    const resultNumbers = numbers.filter(number => Math.sqrt(number) % 1 === 0 && Math.cbrt(number) % 1 === 0);
 
-    // Output the result numbers
-    return `${resultNumbers}`;
-  }}
+      for (const num of numbers) {
+        // Check if the number is a perfect square
+        const sqrt = Math.sqrt(num);
+        if (Number.isInteger(sqrt)) {
+          // Check if the square root is also a perfect cube
+          const cubeRoot = Math.cbrt(num);
+          if (Number.isInteger(cubeRoot)) {
+            // Return the number if it's both a perfect square and a perfect cube
+            return `${num}`;
+          }
+        }
+      }
+
+    }
+  }
 
 
   return "";
