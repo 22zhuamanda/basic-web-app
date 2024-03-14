@@ -29,7 +29,7 @@ export default function QueryProcessor(query: string): string {
     return sum.toString();
   }
 
-  if (query.toLowerCase().includes("largest:")) {
+  if (query.toLowerCase().includes("largest")) {
     // Extract numbers from the query
     const match = query.match(/\d+/g);
     if (match) {
@@ -38,7 +38,7 @@ export default function QueryProcessor(query: string): string {
     // Find the largest number
     const largest = Math.max(...numbers);
   
-    return `${largest}`;
+    return largest.toString();
   }}
 
   if (query.toLowerCase().includes("34 plus 3")) {
