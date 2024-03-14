@@ -87,14 +87,12 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("minus")) {
     // Extract numbers from the query
     const match = query.match(/\d+/g);
-    if (match) {
-      const numbers = match.map(Number);
+    if (match && match.length >= 2) {
+        const [num1, num2] = match.map(Number);
 
-      // Add all the numbers
-      const sum = numbers.reduce((acc, num) => acc - num, 0);
-
-      return `${sum}`;
-    }
+        // Calculate the result
+        const result = num1 - num2;
+        return `${result}`;}
   }
 
   // function isPrime(number) {
