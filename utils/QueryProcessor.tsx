@@ -84,6 +84,40 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("minus")) {
+    // Extract numbers from the query
+    const match = query.match(/\d+/g);
+    if (match) {
+      const numbers = match.map(Number);
+
+      // Add all the numbers
+      const sum = numbers.reduce((acc, num) => acc - num, 0);
+
+      return `${sum}`;
+    }
+  }
+
+  function isPrime(number) {
+    if (number <= 1) return false;
+    if (number <= 3) return true;
+    if (number % 2 === 0 || number % 3 === 0) return false;
+    let i = 5;
+    while (i * i <= number) {
+        if (number % i === 0 || number % (i + 2) === 0) return false;
+        i += 6;
+    }
+    return true;
+  }
+
+
+  // if (query.toLowerCase().includes("primes")) {
+  //   const match = query.match(/\d+/g);
+  //   if (match) {
+  //     const numbers = match.map(Number);
+
+  //   // Filter prime numbers
+  //   const primeNumbers = numbers.filter(number => isPrime(number));
+
 
   return "";
 }
