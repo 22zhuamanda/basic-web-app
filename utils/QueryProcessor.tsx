@@ -41,11 +41,22 @@ export default function QueryProcessor(query: string): string {
     return largest.toString();
   }}
 
-  if (query.toLowerCase().includes("34 plus 3")) {
-    return (
-      "37"
-    );
-  }
+  
+  if (query.toLowerCase().includes("multiplied")) {
+    // Extract numbers from the query
+    const match = query.match(/\d+/g);
+    if (match) {
+      const numbers = match.map(Number);
+    
+    /// Multiply all the numbers
+    let product = 1;
+    for (const num of numbers) {
+      product *= num;
+    }
+
+    return `${product}`;
+    }}
+
 
   return "";
 }
