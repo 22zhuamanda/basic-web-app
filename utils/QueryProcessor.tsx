@@ -20,13 +20,16 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("plus")) {
-    const [num1, num2] = query.split(" plus ").map(Number);
+    // Extract numbers from the query
+    const match = query.match(/\d+/g);
+    if (match) {
+      const numbers = match.map(Number);
 
-    // Performing addition operation
-    const sum = num1 + num2;
+      // Add all the numbers
+      const sum = numbers.reduce((acc, num) => acc + num, 0);
 
-    // Returning the result as a string
-    return sum.toString();
+      return `${sum}`;
+    }
   }
 
   if (query.toLowerCase().includes("largest")) {
