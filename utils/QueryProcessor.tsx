@@ -55,7 +55,22 @@ export default function QueryProcessor(query: string): string {
     }
 
     return `${product}`;
-    }}
+  }}
+
+  if (query.toLowerCase().includes("square") && query.toLowerCase().includes("cube")) {
+    // Extract numbers from the query string
+    const match = query.match(/\d+/g);
+
+    if (match) {
+      const numbers = match.map(Number);
+    
+
+    // Filter numbers that are both squares and cubes
+    const resultNumbers = numbers.filter(number => Math.sqrt(number) % 1 === 0 && Math.cbrt(number) % 1 === 0);
+
+    // Output the result numbers
+    return `${resultNumbers}`;
+  }}
 
 
   return "";
