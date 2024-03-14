@@ -19,10 +19,21 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-  if (query.toLowerCase().includes("72 plus 27")) {
-    return (
-      "99"
-    );
+  if (query.toLowerCase().includes("plus")) {
+    const matches = query.match(/(\d+)\s*\+\s*(\d+)/);
+    if (matches) {
+      // Extracting numbers from the matches
+      const num1 = parseInt(matches[1]);
+      const num2 = parseInt(matches[2]);
+    
+      // Performing addition operation
+      const sum = num1 + num2;
+    
+      // Returning the result as a string
+      return sum.toString();} else {
+        // Return a message indicating that the query does not contain addition operation
+        return "Query does not contain addition operation.";
+      }
   }
 
   if (query.toLowerCase().includes("largest: 87, 46, 37")) {
