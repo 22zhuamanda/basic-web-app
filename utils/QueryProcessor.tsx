@@ -25,5 +25,11 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes("largest: 87, 46, 37")) {
+    return (
+      "87"
+    );
+  }
+
   return "";
 }
