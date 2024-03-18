@@ -117,9 +117,9 @@ export default function QueryProcessor(query: string): string {
         const result = Math.pow(base, exponent);
 
 
-    // Output the result
-    return `${result}`;}
-}
+      // Output the result
+      return `${result}`;}
+  }
 
   return "";
 }
